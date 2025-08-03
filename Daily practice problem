@@ -1,4 +1,4 @@
-class Solution {
+1-class Solution {
     public int[] asteroidCollision(int[] arr) {
         List<Integer> lst=new ArrayList<>();
         for(int i=0;i<arr.length;i++){
