@@ -22,3 +22,22 @@
         return res;
     }
 }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2- Leetcode 2104 Sum of subarrays ranges
+Brute Force--
+class Solution {
+    public long subArrayRanges(int[] arr) {
+        long sum=0;
+        int n=arr.length;
+        for(int i=0;i<n;i++){
+            int small=arr[i];
+            int large=arr[i];
+            for(int j=i;j<n;j++){
+                small=Math.min(small,arr[j]);
+                large=Math.max(large,arr[j]);
+                sum+=(large-small);
+            }
+        }
+        return sum;
+    }
+}
