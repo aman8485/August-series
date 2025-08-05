@@ -269,4 +269,34 @@ class Solution {
                  sumSubarrayMins(arr) );
     }
 }
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3-Leetcode Remove K digits
 
+class Solution {
+    public String removeKdigits(String arr, int k) {
+        Stack<Character> st=new Stack<>();
+        for(int i=0 ; i < arr.length();i++){
+            char curr=arr.charAt(i);
+            while(!st.isEmpty() && k>0 && st.peek()>curr){
+                st.pop();
+                k--;
+            }
+            st.push(curr);
+        }
+    while(!st.isEmpty() && k>0){
+        st.pop();
+        k--;
+       }
+       if(st.isEmpty()) return "0";
+       StringBuilder ans=new StringBuilder();
+       while(!st.isEmpty()){
+        ans.append(st.pop());
+       }
+       while(ans.length()>0 && ans.charAt(ans.length()-1)=='0'){
+        ans.deleteCharAt(ans.length()-1);
+       }
+       ans.reverse();
+       if(ans.length()==0)return "0";
+       return ans.toString();
+    }
+}
