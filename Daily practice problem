@@ -384,4 +384,26 @@ class Solution {
         
     }
 }
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6- Leetcode two sum
+
+class Solution {
+    public int[] twoSum(int[] arr, int x) {
+        int []ans=new int[2];
+        int n=arr.length;
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int i=0;i<n;i++){
+            int rem=x-arr[i];
+            if(map.containsKey(rem)){
+               ans[0]=i;
+               ans[1]=map.get(rem);
+               break;
+            }else{
+                map.put(arr[i],i);
+            }
+        }
+        return ans;
+    }
+}
 
