@@ -441,4 +441,34 @@ class Solution {
        return total;
     }
 }
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+8- Leetcode Largest Rectangle In Histogram #Hard
+
+class Solution {
+    public int largestRectangleArea(int[] arr) {
+        int n=arr.length;
+        Stack<Integer> st=new Stack<>();
+        int nse,pse;
+        int area;
+        int largearea=0;
+        for(int i=0;i<n;i++){
+            while(!st.isEmpty() && arr[st.peek()]>=arr[i]){
+                int idx=st.pop();
+                nse=i;
+                pse=st.isEmpty() ? -1:st.peek();
+                area=arr[idx]*(nse-pse-1);
+                largearea=Math.max(largearea,area);
+            }
+            st.push(i);
+        }
+        while(!st.isEmpty()){
+            nse=n;
+            int ind=st.pop();
+            pse=st.isEmpty() ? -1:st.peek();
+            area=arr[ind]*(nse-pse-1);
+            largearea=Math.max(largearea,area);
+        }
+       return largearea;
+    }
+}
 
