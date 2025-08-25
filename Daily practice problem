@@ -686,3 +686,23 @@ class Solution {
     return helper(0,n,arr,k);
     }
 }
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+16 - Count all subsequences with sum K
+
+class Solution {
+    private int Helper(int i,int k,int[]arr){
+        if(k==0){
+            return 1;
+        }
+        if(k<0 || i==arr.length){
+            return 0;
+        }
+        return Helper(i+1,k-arr[i],arr) + Helper(i+1,k,arr);
+    }
+    public int countSubsequenceWithTargetSum(int[] arr, int k) {
+        //your code goes here
+        return Helper(0,k,arr);
+
+    }
+}
