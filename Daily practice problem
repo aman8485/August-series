@@ -664,3 +664,25 @@ class Solution {
         return cnt;
     }
 }
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+15 - Check if there exists a subsequence with sum K
+
+class Solution {
+    public boolean helper(int i,int n,int[]arr, int k){
+        if(k==0){
+            return true;
+        }
+        if(k<0){
+            return false;
+        }
+        if(i==n){
+            return k==0;
+        }
+        return helper(i+1,n,arr,k-arr[i]) || helper(i+1,n,arr,k);
+    }
+    public boolean checkSubsequenceSum(int[] arr, int k) {
+      
+      int n=arr.length;
+    return helper(0,n,arr,k);
+    }
+}
