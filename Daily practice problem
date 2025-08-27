@@ -736,3 +736,30 @@ class Solution {
 return ans;
     }
 }
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+18 - Combination Sum-III
+
+class Solution {
+    private void function(int sum,int last,List<Integer> curr,int k,List<List<Integer>> ans){
+if(sum==0 && curr.size()==k){
+    ans.add(new ArrayList<>(curr));
+}
+if(sum<=0 && curr.size()>k ) return;
+for(int i=last;i<=9;i++){
+    if(i<=sum){
+        curr.add(i);
+        function(sum-i,i+1,curr,k,ans);
+        curr.remove(curr.size()-1);
+    }else{
+        break;
+    }
+}
+    }
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        //your code goes here
+        List<List<Integer>> ans=new ArrayList<>();
+        List<Integer> curr=new ArrayList<>();
+        function(n,1,curr,k,ans);
+        return ans;
+    }
+}
