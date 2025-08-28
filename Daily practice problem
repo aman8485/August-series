@@ -763,3 +763,21 @@ for(int i=last;i<=9;i++){
         return ans;
     }
 }
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+19 - Inorder Traversal
+
+
+class Solution {
+    private void inorder(TreeNode root,List<Integer> ans){
+if(root==null){
+    return;
+}
+inorder(root.left,ans);
+ans.add(root.data);
+inorder(root.right,ans);
+    }
+    public List<Integer> inorder(TreeNode root) {
+        ArrayList<Integer> ans=new ArrayList<>();
+        inorder(root,ans);
+        return ans;
+    
